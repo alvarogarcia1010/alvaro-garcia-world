@@ -10,6 +10,6 @@ package alvarogarciaworld;
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
 public enum Type {
-    RAZA1, RAZA2, RAZA3;
+    ESPECIALISTA, ESCUADRON, RAZA1, RAZA2, RAZA3;
     
 }
