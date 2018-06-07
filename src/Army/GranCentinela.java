@@ -1,12 +1,14 @@
 
-package Machines;
+package Army;
 
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
-public class WarMachine extends MachineManager implements MachineManagementInterface {
+public class GranCentinela extends ArmyManager implements ArmyManagementInterface {
 
+   
+    
     @Override
     public void atacar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

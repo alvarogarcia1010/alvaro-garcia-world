@@ -7,4 +7,9 @@ package Machines;
  */
 public interface MachineManagementInterface {
     
+    void atacar();
+    void defender();
+    void morir();
+    
+    
 }

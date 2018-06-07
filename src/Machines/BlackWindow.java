@@ -1,11 +1,15 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Machines;
 
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
-public class WarMachine extends MachineManager implements MachineManagementInterface {
+public class BlackWindow extends MachineManager implements MachineManagementInterface{
 
     @Override
     public void atacar() {

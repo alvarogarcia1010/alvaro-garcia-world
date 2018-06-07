@@ -15,6 +15,8 @@ public class ArmyManager{
     protected int vida;
     protected int damage;
     protected int waitTime;
+    protected int creationFase;
+    protected boolean isEnable;
     protected TreeMap<Type, Integer> cost;
     
     //GETTER AND SETTER
@@ -48,6 +50,22 @@ public class ArmyManager{
 
     public void setWaitTime(int waitTime) {
         this.waitTime = waitTime;
+    }
+
+    public int getCreationFase() {
+        return creationFase;
+    }
+
+    public void setCreationFase(int creationFase) {
+        this.creationFase = creationFase;
+    }
+
+    public boolean isIsEnable() {
+        return isEnable;
+    }
+
+    public void setIsEnable(boolean isEnable) {
+        this.isEnable = isEnable;
     }
     
     public void addCost(Type recurso, int cost){
