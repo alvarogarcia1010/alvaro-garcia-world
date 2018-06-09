@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Machines;
+package Modelo.Machines;
 
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
-public class GhostCar extends MachineManager implements MachineManagementInterface{
+public class BlackWindow extends MachineManager implements MachineManagementInterface{
 
     @Override
     public void atacar() {

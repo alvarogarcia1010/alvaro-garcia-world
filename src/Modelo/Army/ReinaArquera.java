@@ -1,11 +1,11 @@
 
-package Army;
+package Modelo.Army;
 
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
-public class GranCentinela extends ArmyManager implements ArmyManagementInterface {
+public class ReinaArquera extends ArmyManager implements ArmyManagementInterface {
 
    
     

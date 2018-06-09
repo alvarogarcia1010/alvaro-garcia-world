@@ -1,11 +1,11 @@
 
-package Army;
+package Modelo.Army;
 
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
-public class Montapuercos extends ArmyManager implements ArmyManagementInterface {
+public class Valquirias extends ArmyManager implements ArmyManagementInterface {
 
    
     

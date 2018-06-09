@@ -1,14 +1,13 @@
 
-package Army;
+package Modelo.Army;
 
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
-public class Bombarderos extends ArmyManager implements ArmyManagementInterface {
+public class Barbaros extends ArmyManager implements ArmyManagementInterface {
 
    
-    
     @Override
     public void atacar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

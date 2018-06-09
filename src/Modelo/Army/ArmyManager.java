@@ -1,5 +1,5 @@
 
-package Army;
+package Modelo.Army;
 
 import alvarogarciaworld.Type;
 import java.util.Map;

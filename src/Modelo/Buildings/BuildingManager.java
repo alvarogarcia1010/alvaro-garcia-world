@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Machines;
+
+package Modelo.Buildings;
 
 import alvarogarciaworld.Type;
 import java.util.Map;
@@ -13,17 +9,14 @@ import java.util.TreeMap;
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
-public class MachineManager {
-    
+public class BuildingManager {
     protected Type tipo;
     protected int vida;
-    protected int damage;
     protected int waitTime;
     protected int creationFase;
     protected boolean isEnable;
     protected TreeMap<Type, Integer> cost;
-    
-    //GETTER AND SETTER
+
     public Type getTipo() {
         return tipo;
     }
@@ -38,14 +31,6 @@ public class MachineManager {
 
     public void setVida(int vida) {
         this.vida = vida;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
     }
 
     public int getWaitTime() {
@@ -75,7 +60,6 @@ public class MachineManager {
     public void addCost(Type recurso, int cost){
         this.cost.put(recurso, cost);
     }
-    
  
     public void viewCost() {
         for (Map.Entry <Type, Integer> recurso : this.cost.entrySet()) {
@@ -83,6 +67,5 @@ public class MachineManager {
         }
     }
     
-     //CONSTRUCTOR BUILDER
     
 }

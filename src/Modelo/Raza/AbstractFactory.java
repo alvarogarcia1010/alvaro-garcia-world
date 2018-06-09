@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Buildings;
+package Modelo.Raza;
 
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
-public interface Edificacion {
+public interface AbstractFactory {
     
 }

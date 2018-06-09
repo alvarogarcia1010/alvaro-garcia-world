@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Buildings;
+package Modelo.Buildings;
 
 import alvarogarciaworld.Type;
 import java.util.Map;
@@ -13,23 +13,39 @@ import java.util.TreeMap;
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
-public class CentroDeMando extends BuildingManager {
+public class CentroDeMando extends BuildingManager implements BuildingManagementInterface {
     private int nivel;
     private TreeMap<Type, Integer> maxCapacity;
-    private static final CentroDeMando[] instace = new CentroDeMando[2];
+    private static CentroDeMando[] instance = new CentroDeMando[2];
 
 
     //CONSTRUCTOR BUILDER
+    private CentroDeMando(){
+       
+    }
     
     //OBTENIENDO SOLO UNA INSTANCIA PARA CADA ALDEA
-    public synchronized static CentroDeMando getInstace(){
-//        for(CentroDeMando centro : instace){
-//            if(centro = null){
-//                centro = new CentroDeMando();
-//            }
-//        }
+     /**
+     * Create a single instance of Modelo.Building.CentroDeMando class
+     *
+     * @return CentroDeMando
+     */
+    public synchronized static CentroDeMando getInstace(int aldea){
+        if(aldea == 1){
+            if(instance[0] == null){
+                instance[0] = new CentroDeMando();
+            }
+            return instance[0];
+        }else if (aldea == 2){
+            if(instance[1] == null){
+                instance[1] = new CentroDeMando();
+            }
+            return instance[1];
+        }else{
+            return null;
+        }
         
-        return instace[0];
+
     }
     
     //METODOS GETTER AND SETTER
@@ -55,6 +71,11 @@ public class CentroDeMando extends BuildingManager {
     public void MejorarCentroDeMando(){
         //Aumentar el nivel en +1
         //Calcular el nuevo porcentaje de almacenamiento
+    }
+
+    @Override
+    public void destruir() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
