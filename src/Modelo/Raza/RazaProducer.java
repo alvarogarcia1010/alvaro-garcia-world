@@ -12,7 +12,7 @@ import alvarogarciaworld.Type;
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
 public class RazaProducer {
-        public static AbstractFactory getFactory(Type type){
+        public static String getFactory(Type type){
             switch (type){
                 case RAZA1:
                     
