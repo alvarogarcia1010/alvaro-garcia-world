@@ -14,7 +14,7 @@ import alvarogarciaworld.Type;
 public class AvengersOfArrow extends RazaManager {
     
     public AvengersOfArrow() {
-        super(Type.RAZA1.getName(), false, "Tropas a bajo costo");
+        super(Type.AVENGERSOFARROW.getNombre(), false, "Tropas a bajo costo");
         this.tropasDisponibles.add(Type.ARQUERAS);
         this.tropasDisponibles.add(Type.VALQUIRIAS);
         this.tropasDisponibles.add(Type.REINAARQUERA);

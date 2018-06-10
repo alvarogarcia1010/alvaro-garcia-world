@@ -14,7 +14,7 @@ import alvarogarciaworld.Type;
 public class KnightsOfTheShadows extends RazaManager {
 
     public KnightsOfTheShadows() {
-        super(Type.RAZA2.getName(), false, "Tropas mas fuertes");
+        super(Type.KNIGHTSOFTHESHADOWS.getNombre(), false, "Tropas mas fuertes");
         this.tropasDisponibles.add(Type.GRANCENTINELA);
         this.tropasDisponibles.add(Type.MONTAPUERCOS);
         this.tropasDisponibles.add(Type.BOMBARDEROS);

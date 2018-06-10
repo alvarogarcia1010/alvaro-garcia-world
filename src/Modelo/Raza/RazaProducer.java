@@ -14,9 +14,11 @@ import alvarogarciaworld.Type;
 public class RazaProducer {
         public static String getFactory(Type type){
             switch (type){
-                case RAZA1:
+                case AVENGERSOFARROW:
                     
-                case RAZA2:
+                case KNIGHTSOFTHESHADOWS:
+                    
+                case LOSGUERREROSZ:    
                     
             }
             return null;

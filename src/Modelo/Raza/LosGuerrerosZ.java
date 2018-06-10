@@ -14,7 +14,7 @@ import alvarogarciaworld.Type;
 public class LosGuerrerosZ extends RazaManager {
     
     public LosGuerrerosZ() {
-        super(Type.RAZA3.getName(), false, "Tropas con mayor vida");
+        super(Type.LOSGUERREROSZ.getNombre(), false, "Tropas con mayor vida");
         this.tropasDisponibles.add(Type.REYBARBARO);
         this.tropasDisponibles.add(Type.BARBAROS);
         this.tropasDisponibles.add(Type.LANZARROCAS);
