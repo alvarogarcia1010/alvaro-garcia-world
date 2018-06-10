@@ -15,6 +15,7 @@ import java.util.TreeMap;
  */
 public class MachineManager {
     
+    protected String nombre;
     protected Type tipo;
     protected int vida;
     protected int damage;
@@ -24,6 +25,14 @@ public class MachineManager {
     protected TreeMap<Type, Integer> cost;
     
     //GETTER AND SETTER
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     public Type getTipo() {
         return tipo;
     }

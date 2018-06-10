@@ -11,6 +11,7 @@ import java.util.TreeMap;
  */
 public class ArmyManager{
     
+    protected String nombre;
     protected Type tipo;
     protected int vida;
     protected int damage;
@@ -19,7 +20,17 @@ public class ArmyManager{
     protected boolean isEnable;
     protected TreeMap<Type, Integer> cost;
     
+
+
     //GETTER AND SETTER
+    public String getNombre() {
+        return nombre;
+    }
+        
+    public void setNombre(String nombre) {    
+        this.nombre = nombre;
+    }
+
     public Type getTipo() {
         return tipo;
     }
