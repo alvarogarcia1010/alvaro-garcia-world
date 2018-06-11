@@ -97,7 +97,7 @@ public class RazaManager {
     public void showArmyAvailable() {
         System.out.print("Ejercito disponible: ");
         for (Type tropa : this.tropasDisponibles) {
-            System.out.print(tropa.getName() + "\t<->\t");
+            System.out.print(tropa.getNombre() + "\t<->\t");
         }
         System.out.print("\n");
     }
@@ -105,7 +105,7 @@ public class RazaManager {
     public void showBuildingAvailable() {
         System.out.print("Edificios disponible: ");
         for (Type edificio : this.tropasDisponibles) {
-            System.out.print(edificio.getName() + "\t<->\t");
+            System.out.print(edificio.getNombre() + "\t<->\t");
         }
         System.out.print("\n");        
     }
@@ -113,7 +113,7 @@ public class RazaManager {
     public void showMachinesAvailable() {
         System.out.print("Ejercito disponible: ");
         for (Type vehiculo : this.tropasDisponibles) {
-            System.out.print(vehiculo.getName() + "\t<->\t");
+            System.out.print(vehiculo.getNombre() + "\t<->\t");
         }
         System.out.print("\n");
     }

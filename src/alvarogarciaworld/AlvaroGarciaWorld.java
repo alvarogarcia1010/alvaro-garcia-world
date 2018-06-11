@@ -5,6 +5,8 @@
  */
 package alvarogarciaworld;
 
+import View.Menu;
+
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
@@ -16,6 +18,9 @@ public class AlvaroGarciaWorld {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Menu m  = Menu.getInstance();
+        m.showMain();
+
         System.out.println("Nombre: " + Type.ARQUERAS.getNombre());
         System.out.println("Tipo: " + Type.ARQUERAS.getTipo());
         System.out.println("Tiempo de espera: " + Type.ARQUERAS.getWaitTime());
@@ -26,6 +31,10 @@ public class AlvaroGarciaWorld {
         System.out.println("Cantidad: " + Type.ARQUERAS.getCostR2());
         System.out.println("Puntos de Ataque: " + Type.ARQUERAS.getAttackPower());
         
+        
+        int hola = 234;
+        int temp =(int)((double)hola *1.5);
+        System.out.println(temp);
     }
     
 }

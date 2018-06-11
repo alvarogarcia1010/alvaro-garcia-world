@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Modelo.Buildings;
 
 import alvarogarciaworld.Type;
@@ -16,11 +12,14 @@ import java.util.TreeMap;
 public class CentroDeMando extends BuildingManager implements BuildingManagementInterface {
     private int nivel;
     private TreeMap<Type, Integer> maxCapacity;
-    private static CentroDeMando[] instance = new CentroDeMando[2];
+    private static final CentroDeMando[] instance = new CentroDeMando[2];
 
 
     //CONSTRUCTOR BUILDER
     private CentroDeMando(){
+        this.maxCapacity.put(Type.ORO, 5000);
+        this.maxCapacity.put(Type.DIAMANTES, 3000);
+        this.maxCapacity.put(Type.ZAFIRO, 10000);
        
     }
     
@@ -68,9 +67,28 @@ public class CentroDeMando extends BuildingManager implements BuildingManagement
     }
     
     
-    public void MejorarCentroDeMando(){
-        //Aumentar el nivel en +1
-        //Calcular el nuevo porcentaje de almacenamiento
+    public void mejorarCentroDeMando(){
+        int temp = 0;
+        this.nivel += 1;
+        switch (this.nivel) {
+            case 1:
+                for (Map.Entry<Type, Integer> recurso : this.maxCapacity.entrySet()) {
+                    temp =(int)((double)recurso.getValue() *1.1);
+                    recurso.setValue(temp);
+                }   break;
+            case 2:
+                for (Map.Entry<Type, Integer> recurso : this.maxCapacity.entrySet()) {
+                    temp =(int)((double)recurso.getValue() *1.3);
+                    recurso.setValue(temp);
+                }   break;
+            case 3:
+                for (Map.Entry<Type, Integer> recurso : this.maxCapacity.entrySet()) {
+                    temp =(int)((double)recurso.getValue() *1.5);
+                    recurso.setValue(temp);
+                }   break;
+            default:
+                break;
+        }
     }
 
     @Override
