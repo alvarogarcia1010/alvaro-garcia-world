@@ -12,11 +12,13 @@ import java.util.TreeMap;
 public class CentroDeMando extends BuildingManager implements BuildingManagementInterface {
     private int nivel;
     private TreeMap<Type, Integer> maxCapacity;
-    private static final CentroDeMando[] instance = new CentroDeMando[2];
-
+    private static CentroDeMando[] instance = new CentroDeMando[2];
+    
 
     //CONSTRUCTOR BUILDER
     private CentroDeMando(){
+        
+        this.maxCapacity = new TreeMap<>();
         this.maxCapacity.put(Type.ORO, 5000);
         this.maxCapacity.put(Type.DIAMANTES, 3000);
         this.maxCapacity.put(Type.ZAFIRO, 10000);
@@ -27,9 +29,10 @@ public class CentroDeMando extends BuildingManager implements BuildingManagement
      /**
      * Create a single instance of Modelo.Building.CentroDeMando class
      *
+     * @param aldea
      * @return CentroDeMando
      */
-    public synchronized static CentroDeMando getInstace(int aldea){
+    public static CentroDeMando getInstance(int aldea){
         if(aldea == 1){
             if(instance[0] == null){
                 instance[0] = new CentroDeMando();
@@ -64,6 +67,10 @@ public class CentroDeMando extends BuildingManager implements BuildingManagement
         for (Map.Entry <Type, Integer> recurso : this.maxCapacity.entrySet()) {
             System.out.println(recurso.getKey() + "  ->  " + recurso.getValue());
         }
+    }
+
+    public TreeMap<Type, Integer> getMaxCapacity() {
+        return maxCapacity;
     }
     
     

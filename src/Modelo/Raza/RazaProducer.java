@@ -12,14 +12,14 @@ import alvarogarciaworld.Type;
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
 public class RazaProducer {
-        public static String getFactory(Type type){
+        public static RazaManager getFactory(Type type){
             switch (type){
                 case AVENGERSOFARROW:
-                    
+                    return new AvengersOfArrow();
                 case KNIGHTSOFTHESHADOWS:
-                    
+                    return new KnightsOfTheShadows();
                 case LOSGUERREROSZ:    
-                    
+                    return new LosGuerrerosZ();
             }
             return null;
 }

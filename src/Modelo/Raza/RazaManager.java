@@ -26,6 +26,10 @@ public class RazaManager {
         this.enUso = enUso;
         this.fortaleza = fortaleza;
         
+        this.tropasDisponibles = new ArrayList<>();
+        this.edificacionesDisponibles = new ArrayList<>();
+        this.vehiculosDisponibles = new ArrayList<>();
+        
         this.edificacionesDisponibles.add(Type.CENTRODEMANDO);
         this.edificacionesDisponibles.add(Type.CUARTEL);
         this.edificacionesDisponibles.add(Type.EXTRACTORDEZAFIRO);
@@ -95,7 +99,7 @@ public class RazaManager {
  * This
  */
     public void showArmyAvailable() {
-        System.out.print("Ejercito disponible: ");
+        System.out.println("Ejercito disponible: ");
         for (Type tropa : this.tropasDisponibles) {
             System.out.print(tropa.getNombre() + "\t<->\t");
         }
@@ -103,16 +107,16 @@ public class RazaManager {
     }
     
     public void showBuildingAvailable() {
-        System.out.print("Edificios disponible: ");
-        for (Type edificio : this.tropasDisponibles) {
+        System.out.println("Edificios disponible: ");
+        for (Type edificio : this.edificacionesDisponibles) {
             System.out.print(edificio.getNombre() + "\t<->\t");
         }
         System.out.print("\n");        
     }
     
     public void showMachinesAvailable() {
-        System.out.print("Ejercito disponible: ");
-        for (Type vehiculo : this.tropasDisponibles) {
+        System.out.println("Ejercito disponible: ");
+        for (Type vehiculo : this.vehiculosDisponibles) {
             System.out.print(vehiculo.getNombre() + "\t<->\t");
         }
         System.out.print("\n");

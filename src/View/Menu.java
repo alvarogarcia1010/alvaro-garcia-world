@@ -24,6 +24,32 @@ public class Menu {
         }
         return instance;
     }
+    
+    public String insertarNombre(){
+        String nombre;
+        
+        String msj = "Ingrese nombre del jugador";
+        
+        nombre = JOptionPane.showInputDialog(msj,null);
+        
+        return nombre;
+    }
+    
+    public int razaOption(){
+        int option;
+        
+        String options = "1. Vengadores de Flecha \n" +
+                         "2. Caballeros de la Oscuridad \n" +
+                         "3. Los Guerreros Z \n" +
+                         "Elija la raza que desea elegir:";
+        try {
+            option = Integer.parseInt(JOptionPane.showInputDialog(options, null));
+        }catch(NumberFormatException e){
+            option = 5;
+        }
+        
+        return option;
+    }
 
     public int generalOptions() {
         int option;

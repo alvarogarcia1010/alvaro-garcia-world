@@ -18,23 +18,27 @@ public class AlvaroGarciaWorld {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Menu m  = Menu.getInstance();
-        m.showMain();
-
-        System.out.println("Nombre: " + Type.ARQUERAS.getNombre());
-        System.out.println("Tipo: " + Type.ARQUERAS.getTipo());
-        System.out.println("Tiempo de espera: " + Type.ARQUERAS.getWaitTime());
-        System.out.println("Vida: " + Type.ARQUERAS.getVida());
-        System.out.println("Tipo de Recurso: " + Type.ARQUERAS.getRecurso1());
-        System.out.println("Cantidad: " + Type.ARQUERAS.getCostR1());
-        System.out.println("Tipo de Recurso: " + Type.ARQUERAS.getRecurso2());
-        System.out.println("Cantidad: " + Type.ARQUERAS.getCostR2());
-        System.out.println("Puntos de Ataque: " + Type.ARQUERAS.getAttackPower());
+        
+        Game.initializeGame();
         
         
-        int hola = 234;
-        int temp =(int)((double)hola *1.5);
-        System.out.println(temp);
+//        Menu m  = Menu.getInstance();
+//        m.showMain();
+//
+//        System.out.println("Nombre: " + Type.ARQUERAS.getNombre());
+//        System.out.println("Tipo: " + Type.ARQUERAS.getTipo());
+//        System.out.println("Tiempo de espera: " + Type.ARQUERAS.getWaitTime());
+//        System.out.println("Vida: " + Type.ARQUERAS.getVida());
+//        System.out.println("Tipo de Recurso: " + Type.ARQUERAS.getRecurso1());
+//        System.out.println("Cantidad: " + Type.ARQUERAS.getCostR1());
+//        System.out.println("Tipo de Recurso: " + Type.ARQUERAS.getRecurso2());
+//        System.out.println("Cantidad: " + Type.ARQUERAS.getCostR2());
+//        System.out.println("Puntos de Ataque: " + Type.ARQUERAS.getAttackPower());
+//        
+//        
+//        int hola = 234;
+//        int temp =(int)((double)hola *1.5);
+//        System.out.println(temp);
     }
     
 }
