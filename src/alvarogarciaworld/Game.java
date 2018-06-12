@@ -21,6 +21,7 @@ public class Game {
         //Obteniendo instancia del menu para mostrar opciones
         Menu m  = Menu.getInstance();
         int option;
+        boolean aldeaDestruida = false;
 
         RazaManager raza1 = RazaProducer.getFactory(Type.AVENGERSOFARROW);
         RazaManager raza2 = RazaProducer.getFactory(Type.KNIGHTSOFTHESHADOWS);
@@ -77,8 +78,6 @@ public class Game {
                 break;
         }
         
-        
-        
         //Para Jugador 2
         
         System.out.println("Jugador Dos \n");
@@ -130,11 +129,30 @@ public class Game {
         
            System.out.println(playerOne.getRazaDisponible().getNombre());
            System.out.println(playerTwo.getRazaDisponible().getNombre());
-        
-        }catch(InterruptedException e){}
+           
+        //Logica del juego
+        while(!aldeaDestruida){
+            if(playerOne.getEdificiosConstruidos().isEmpty() || playerTwo.getEdificiosConstruidos().isEmpty()){
+                if(playerOne.getEdificiosConstruidos().isEmpty()){
+                    System.out.println(playerTwo.getNombreJugador() + " es el ganador");
+                }
+                else{
+                    System.out.println(playerOne.getNombreJugador() + " es el ganador");
+                }
+                aldeaDestruida = true;
+                break;
+            }
             
+            playerOne.turno();
+            playerTwo.turno();
+        }
         
         
+        
+        }catch(InterruptedException e){
+           System.err.println("Lo sentimos, hubo un error de compilacion :(");
+        }
+            
     }
     
 }

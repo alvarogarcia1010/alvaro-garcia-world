@@ -96,6 +96,23 @@ public class AldeaManager {
     public void setRazaDisponible(RazaManager razaDisponible) {
         this.razaDisponible = razaDisponible;
     }
+
+    public TreeMap<Type, Integer> getRecursosDisponibles() {
+        return recursosDisponibles;
+    }
+
+    public ArrayList<BuildingManager> getEdificiosConstruidos() {
+        return edificiosConstruidos;
+    }
+
+    public ArrayList<ArmyManager> getTropasPreparadas() {
+        return tropasPreparadas;
+    }
+
+    public ArrayList<MachineManager> getVehiculosPreparados() {
+        return vehiculosPreparados;
+    }
+    
     
     
     
@@ -162,5 +179,9 @@ public class AldeaManager {
         }
         
 
+    }
+    
+    public void turno(){
+    
     }
 }
