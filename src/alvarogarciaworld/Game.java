@@ -81,7 +81,7 @@ public class Game {
         //Para Jugador 2
         
         System.out.println("Jugador Dos \n");
-        playerOne.setNombreJugador(m.insertarNombre());
+        playerTwo.setNombreJugador(m.insertarNombre());
 
         System.out.println("Razas disponibles:");
 
@@ -127,8 +127,8 @@ public class Game {
         }
         
         
-           System.out.println(playerOne.getRazaDisponible().getNombre());
-           System.out.println(playerTwo.getRazaDisponible().getNombre());
+        System.out.println(playerOne.getNombreJugador());
+        System.out.println(playerTwo.getNombreJugador());
            
         //Logica del juego
         while(!aldeaDestruida){
@@ -143,8 +143,14 @@ public class Game {
                 break;
             }
             
+            playerOne.verificarUso();
             playerOne.turno();
+            
+            playerTwo.verificarUso();
             playerTwo.turno();
+            
+            playerOne.avanzarFase();
+            playerTwo.avanzarFase();
         }
         
         

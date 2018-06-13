@@ -67,6 +67,20 @@ public class RazaManager {
     public void setFortaleza(String fortaleza) {
         this.fortaleza = fortaleza;
     }
+
+    public ArrayList<Type> getTropasDisponibles() {
+        return tropasDisponibles;
+    }
+
+    public ArrayList<Type> getVehiculosDisponibles() {
+        return vehiculosDisponibles;
+    }
+
+    public ArrayList<Type> getEdificacionesDisponibles() {
+        return edificacionesDisponibles;
+    }
+    
+    
     
     //AGREGANDO RECURSOS
     /**

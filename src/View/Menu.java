@@ -109,7 +109,7 @@ public class Menu {
         String options = "1. Recolectar Zafiro \n" +
                          "2. Almacenar Oro \n" +
                          "3. Almacenar Diamantes \n" +
-                         "5. Atras \n" +
+                         "4. Atras \n" +
                          "Elija la opcion que desee:";
         try {
             option = Integer.parseInt(JOptionPane.showInputDialog(options, null));
@@ -118,40 +118,6 @@ public class Menu {
         }
 
         return option;
-    }    
-    
-    
-    
-
-    public void showMain() {
-        int option;
-
-        while (true) {
-            generalOptions();
-            try {
-                option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese una opcion ", null));
-            } catch (NumberFormatException e) {
-                option = 5;
-            }
-
-            switch (option) {
-                case 1:
-                    System.out.println("Abriendo Administrado Pa");
-                    break;
-                case 2:
-                    System.out.println("Abriendo Administrado Me");
-                    break;
-                case 3:
-                    System.out.println("Abriendo Administrado His");
-                    break;
-                case 4:
-                    return;
-                default:
-                    System.err.println("Por favor ingrese una opcion valida ");
-            }
-        }
-    }
-
-    
+    }       
     
 }
