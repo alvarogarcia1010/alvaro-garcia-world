@@ -5,11 +5,23 @@
  */
 package Modelo.Machines;
 
+import alvarogarciaworld.Type;
+
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
 public class LegendaryMachine extends MachineManager implements MachineManagementInterface{
+
+    public LegendaryMachine() {
+        super(Type.LEGENDARYMACHINE.getNombre(),
+              Type.LEGENDARYMACHINE,
+              Type.LEGENDARYMACHINE.getVida(),
+              Type.LEGENDARYMACHINE.getAttackPower(),
+              Type.LEGENDARYMACHINE.getWaitTime(),0,false);
+        this.cost.put(Type.LEGENDARYMACHINE.getRecurso1(),Type.LEGENDARYMACHINE.getCostR1());
+        this.cost.put(Type.LEGENDARYMACHINE.getRecurso2(),Type.LEGENDARYMACHINE.getCostR2());
+    }
 
     @Override
     public void atacar() {

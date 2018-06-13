@@ -12,6 +12,17 @@ public class ExtractorDeZafiro extends BuildingManager implements BuildingManage
     private int produccionxfase;
     private Type recurso;
 
+    public ExtractorDeZafiro() {
+        super(Type.EXTRACTORDEZAFIRO.getNombre(),
+              Type.EXTRACTORDEZAFIRO,
+              Type.EXTRACTORDEZAFIRO.getVida(),
+              Type.EXTRACTORDEZAFIRO.getWaitTime(),0,false);
+        this.addCost(Type.EXTRACTORDEZAFIRO.getRecurso1(),Type.EXTRACTORDEZAFIRO.getCostR1());
+        this.addCost(Type.EXTRACTORDEZAFIRO.getRecurso2(),Type.EXTRACTORDEZAFIRO.getCostR2());
+        this.recurso = Type.ZAFIRO;
+        this.produccionxfase = 1000;
+    }
+
     //CONSTRUCTOR
     
     //METODOS GETTER AND SETTER
@@ -40,7 +51,7 @@ public class ExtractorDeZafiro extends BuildingManager implements BuildingManage
 
     @Override
     public void destruir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("El recolector de zafiro ha sido destruido");
     }
     
 }

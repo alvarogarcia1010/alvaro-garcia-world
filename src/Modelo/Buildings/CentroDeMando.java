@@ -17,7 +17,11 @@ public class CentroDeMando extends BuildingManager implements BuildingManagement
 
     //CONSTRUCTOR BUILDER
     private CentroDeMando(){
-        
+        super(Type.CENTRODEMANDO.getNombre(),
+              Type.CENTRODEMANDO,
+              Type.CENTRODEMANDO.getVida(),
+              Type.CENTRODEMANDO.getWaitTime(),0,true);
+        this.nivel= 0;
         this.maxCapacity = new TreeMap<>();
         this.maxCapacity.put(Type.ORO, 5000);
         this.maxCapacity.put(Type.DIAMANTES, 3000);
@@ -100,7 +104,8 @@ public class CentroDeMando extends BuildingManager implements BuildingManagement
 
     @Override
     public void destruir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("El Centro de Mando ha sido Destruido");
+        System.err.println("Game Over");
     }
 
     

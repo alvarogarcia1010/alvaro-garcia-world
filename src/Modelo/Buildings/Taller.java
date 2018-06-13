@@ -2,6 +2,7 @@
 package Modelo.Buildings;
 
 import Modelo.Machines.MachineManager;
+import alvarogarciaworld.Type;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +13,16 @@ public class Taller extends BuildingManager implements BuildingManagementInterfa
 
     private String machineType;
     private ArrayList<MachineManager> machines;
+
+    public Taller() {
+        super(Type.TALLER.getNombre(),
+        Type.TALLER,
+        Type.TALLER.getVida(),
+        Type.TALLER.getWaitTime(),0,false);
+        this.addCost(Type.TALLER.getRecurso1(),Type.TALLER.getCostR1());
+        this.addCost(Type.TALLER.getRecurso2(),Type.TALLER.getCostR2());
+        this.machines = new ArrayList<>();
+    }
 
     //CONSTRUCTOR
     

@@ -5,11 +5,23 @@
  */
 package Modelo.Machines;
 
+import alvarogarciaworld.Type;
+
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
 public class BlackWindow extends MachineManager implements MachineManagementInterface{
+
+    public BlackWindow() {
+        super(Type.BLACKWINDOW.getNombre(),
+        Type.BLACKWINDOW,
+        Type.BLACKWINDOW.getVida(),
+        Type.BLACKWINDOW.getAttackPower(),
+        Type.BLACKWINDOW.getWaitTime(),0,false);
+        this.cost.put(Type.BLACKWINDOW.getRecurso1(),Type.BLACKWINDOW.getCostR1());
+        this.cost.put(Type.BLACKWINDOW.getRecurso2(),Type.BLACKWINDOW.getCostR2());
+    }
 
     @Override
     public void atacar() {

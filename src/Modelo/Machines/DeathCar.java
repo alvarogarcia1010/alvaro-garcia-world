@@ -5,11 +5,23 @@
  */
 package Modelo.Machines;
 
+import alvarogarciaworld.Type;
+
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
 public class DeathCar extends MachineManager implements MachineManagementInterface{
+
+    public DeathCar() {
+        super(Type.DEATHCAR.getNombre(),
+              Type.DEATHCAR,
+              Type.DEATHCAR.getVida(),
+              Type.DEATHCAR.getAttackPower(),
+              Type.DEATHCAR.getWaitTime(),0,false);
+        this.cost.put(Type.DEATHCAR.getRecurso1(),Type.DEATHCAR.getCostR1());
+        this.cost.put(Type.DEATHCAR.getRecurso2(),Type.DEATHCAR.getCostR2());
+    }
 
     @Override
     public void atacar() {

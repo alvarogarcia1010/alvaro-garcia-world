@@ -12,6 +12,17 @@ public class MinaDeOro extends BuildingManager implements BuildingManagementInte
     private int produccionxfase;
     private Type recurso;
 
+    public MinaDeOro() {
+        super(Type.MINADEORO.getNombre(),
+        Type.MINADEORO,
+        Type.MINADEORO.getVida(),
+        Type.MINADEORO.getWaitTime(),0,false);
+        this.addCost(Type.MINADEORO.getRecurso1(),Type.MINADEORO.getCostR1());
+        this.addCost(Type.MINADEORO.getRecurso2(),Type.MINADEORO.getCostR2());
+        this.recurso = Type.ORO;
+        this.produccionxfase = 300;
+    }
+
     //CONSTRUCTOR
     
     //METODOS GETTER AND SETTER
@@ -40,7 +51,7 @@ public class MinaDeOro extends BuildingManager implements BuildingManagementInte
 
     @Override
     public void destruir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("La Mina de Oro ha sido destruida");
     }
     
 }

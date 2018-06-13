@@ -12,6 +12,17 @@ public class MinaDeDiamante extends BuildingManager implements BuildingManagemen
     private int produccionxfase;
     private Type recurso;
 
+    public MinaDeDiamante() {
+        super(Type.MINADEDIAMANTE.getNombre(),
+        Type.MINADEDIAMANTE,
+        Type.MINADEDIAMANTE.getVida(),
+        Type.MINADEDIAMANTE.getWaitTime(),0,false);
+        this.addCost(Type.MINADEDIAMANTE.getRecurso1(),Type.MINADEDIAMANTE.getCostR1());
+        this.addCost(Type.MINADEDIAMANTE.getRecurso2(),Type.MINADEDIAMANTE.getCostR2());
+        this.recurso = Type.DIAMANTES;
+        this.produccionxfase = 500;
+    }
+
     //CONSTRUCTOR
     
     //METODOS GETTER AND SETTER
@@ -40,7 +51,7 @@ public class MinaDeDiamante extends BuildingManager implements BuildingManagemen
 
     @Override
     public void destruir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("La mina de diamantes ha sido destruida");
     }
     
 }

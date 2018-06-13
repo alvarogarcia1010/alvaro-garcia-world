@@ -5,11 +5,23 @@
  */
 package Modelo.Army;
 
+import alvarogarciaworld.Type;
+
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
 public class ReyBarbaro extends ArmyManager implements ArmyManagementInterface {
+
+    public ReyBarbaro() {
+        super(Type.REYBARBARO.getNombre(),
+              Type.REYBARBARO,
+              Type.REYBARBARO.getVida(),
+              Type.REYBARBARO.getAttackPower(),
+              Type.REYBARBARO.getWaitTime(),0,false);
+        this.cost.put(Type.REYBARBARO.getRecurso1(),Type.REYBARBARO.getCostR1());
+        this.cost.put(Type.REYBARBARO.getRecurso2(),Type.REYBARBARO.getCostR2());
+    }
 
    
     

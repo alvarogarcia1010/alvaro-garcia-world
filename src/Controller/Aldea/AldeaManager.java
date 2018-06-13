@@ -114,11 +114,9 @@ public class AldeaManager {
     }
     
     
-    
-    
     //Constructor debe inicializar los recursos y crear el centro de mando
     public void entrenarTropa(){
-        
+        //Desde Cuartel
     }
     
     public void construirEdificio(){
@@ -126,7 +124,7 @@ public class AldeaManager {
     }
     
     public void crearVehiculo(){
-        
+        //Desde Cuartel
     }
     
 

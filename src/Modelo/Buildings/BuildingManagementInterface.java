@@ -12,5 +12,6 @@ package Modelo.Buildings;
 public interface BuildingManagementInterface {
         
         void destruir();
+        
     
 }

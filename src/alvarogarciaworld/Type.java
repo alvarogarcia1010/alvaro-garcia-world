@@ -22,39 +22,39 @@ public enum Type {
     BUILDING(new TypeBuilder("Edificaciones")),
     MACHINE(new TypeBuilder("Vehiculos")),
    
-    REINAARQUERA(new TypeBuilder("Reina Arquera").tipo("Especialista").vida(300).waitTime(3).recursoUno("Zafiro").recursoDos("Diamante").costR1(500).costR2(250).attackPower(100)),
-    ARQUERAS(new TypeBuilder("Arquera").tipo("Escuadron").vida(100).waitTime(1).recursoUno("Oro").recursoDos("Diamante").costR1(250).costR2(150).attackPower(25)),
-    VALQUIRIAS(new TypeBuilder("Valquiria").tipo("Escuadron").vida(150).waitTime(2).recursoUno("Oro").recursoDos("Diamante").costR1(300).costR2(200).attackPower(50)),
+    REINAARQUERA(new TypeBuilder("Reina Arquera").tipo("Especialista").vida(300).waitTime(3).recursoUno(Type.ZAFIRO).recursoDos(Type.DIAMANTES).costR1(500).costR2(250).attackPower(100)),
+    ARQUERAS(new TypeBuilder("Arquera").tipo("Escuadron").vida(100).waitTime(1).recursoUno(Type.ORO).recursoDos(Type.DIAMANTES).costR1(250).costR2(150).attackPower(25)),
+    VALQUIRIAS(new TypeBuilder("Valquiria").tipo("Escuadron").vida(150).waitTime(2).recursoUno(Type.ORO).recursoDos(Type.DIAMANTES).costR1(300).costR2(200).attackPower(50)),
    
-    BLACKWINDOW(new TypeBuilder("Black Windows").tipo("Vehiculo").vida(175).waitTime(2).recursoUno("Zafiro").recursoDos("Oro").costR1(400).costR2(250).attackPower(75)),
-    STARKMACHINE(new TypeBuilder("Stark Machine").tipo("Vehiculo").vida(125).waitTime(1).recursoUno("Zafiro").recursoDos("Oro").costR1(350).costR2(150).attackPower(50)),
+    BLACKWINDOW(new TypeBuilder("Black Windows").tipo("Vehiculo").vida(175).waitTime(2).recursoUno(Type.ZAFIRO).recursoDos(Type.ORO).costR1(400).costR2(250).attackPower(75)),
+    STARKMACHINE(new TypeBuilder("Stark Machine").tipo("Vehiculo").vida(125).waitTime(1).recursoUno(Type.ZAFIRO).recursoDos(Type.ORO).costR1(350).costR2(150).attackPower(50)),
     
-    CENTRODEMANDO(new TypeBuilder("Centro de Mando").tipo("Edificio").vida(500).waitTime(0).recursoUno("Zafiro").recursoDos("Diamante")),
-    MINADEDIAMANTE(new TypeBuilder("Mina de Diamante").tipo("Edificio").vida(150).waitTime(1).recursoUno("Zafiro").recursoDos("Oro").costR1(1500).costR2(750)),
-    MINADEORO(new TypeBuilder("Mina de Oro").tipo("Edificio").vida(150).waitTime(1).recursoUno("Zafiro").recursoDos("Diamante").costR1(1500).costR2(750)),
-    EXTRACTORDEZAFIRO(new TypeBuilder("Extracto de Zafiro").tipo("Edificio").vida(250).waitTime(1).recursoUno("Oro").recursoDos("Diamante").costR1(1000).costR2(1000)),
-    CUARTEL(new TypeBuilder("Cuartel").tipo("Edificio").vida(300).waitTime(2).recursoUno("Oro").recursoDos("Diamante").costR1(750).costR2(750)),
-    HUESERA(new TypeBuilder("Huesera").tipo("Edificio").vida(300).waitTime(2).recursoUno("Zafiro").recursoDos("Diamante").costR1(900).costR2(500)),
-    TALLER(new TypeBuilder("Taller").tipo("Edificio").vida(300).waitTime(2).recursoUno("Zafiro").recursoDos("Oro").costR1(900).costR2(500)),
+    CENTRODEMANDO(new TypeBuilder("Centro de Mando").tipo("Edificio").vida(500).waitTime(0).recursoUno(Type.ZAFIRO).recursoDos(Type.DIAMANTES)),
+    MINADEDIAMANTE(new TypeBuilder("Mina de Diamante").tipo("Edificio").vida(150).waitTime(1).recursoUno(Type.ZAFIRO).recursoDos(Type.ORO).costR1(1500).costR2(750)),
+    MINADEORO(new TypeBuilder("Mina de Oro").tipo("Edificio").vida(150).waitTime(1).recursoUno(Type.ZAFIRO).recursoDos(Type.DIAMANTES).costR1(1500).costR2(750)),
+    EXTRACTORDEZAFIRO(new TypeBuilder("Extracto de Zafiro").tipo("Edificio").vida(250).waitTime(1).recursoUno(Type.ORO).recursoDos(Type.DIAMANTES).costR1(1000).costR2(1000)),
+    CUARTEL(new TypeBuilder("Cuartel").tipo("Edificio").vida(300).waitTime(2).recursoUno(Type.ORO).recursoDos(Type.DIAMANTES).costR1(750).costR2(750)),
+    HUESERA(new TypeBuilder("Huesera").tipo("Edificio").vida(300).waitTime(2).recursoUno(Type.ZAFIRO).recursoDos(Type.DIAMANTES).costR1(900).costR2(500)),
+    TALLER(new TypeBuilder("Taller").tipo("Edificio").vida(300).waitTime(2).recursoUno(Type.ZAFIRO).recursoDos(Type.ORO).costR1(900).costR2(500)),
      
-    GRANCENTINELA(new TypeBuilder("Gran Centinela").tipo("Especialista").vida(350).waitTime(3).recursoUno("Zafiro").recursoDos("Diamante").costR1(600).costR2(400).attackPower(150)),
-    MONTAPUERCOS(new TypeBuilder("Montapuercos").tipo("Escuadron").vida(225).waitTime(2).recursoUno("Oro").recursoDos("Diamante").costR1(300).costR2(300).attackPower(75)),
-    BOMBARDEROS(new TypeBuilder("Bombarderos").tipo("Escuadron").vida(175).waitTime(1).recursoUno("Oro").recursoDos("Diamante").costR1(200).costR2(250).attackPower(50)),
+    GRANCENTINELA(new TypeBuilder("Gran Centinela").tipo("Especialista").vida(350).waitTime(3).recursoUno(Type.ZAFIRO).recursoDos(Type.DIAMANTES).costR1(600).costR2(400).attackPower(150)),
+    MONTAPUERCOS(new TypeBuilder("Montapuercos").tipo("Escuadron").vida(225).waitTime(2).recursoUno(Type.ORO).recursoDos(Type.DIAMANTES).costR1(300).costR2(300).attackPower(75)),
+    BOMBARDEROS(new TypeBuilder("Bombarderos").tipo("Escuadron").vida(175).waitTime(1).recursoUno(Type.ORO).recursoDos(Type.DIAMANTES).costR1(200).costR2(250).attackPower(50)),
    
-    DEATHCAR(new TypeBuilder("Death Car").tipo("Vehiculo").vida(200).waitTime(2).recursoUno("Zafiro").recursoDos("Oro").costR1(400).costR2(200).attackPower(125)),
-    LEGENDARYMACHINE(new TypeBuilder("Legendary Machine").tipo("Vehiculo").vida(250).waitTime(1).recursoUno("Zafiro").recursoDos("Oro").costR1(350).costR2(150).attackPower(100)),
+    DEATHCAR(new TypeBuilder("Death Car").tipo("Vehiculo").vida(200).waitTime(2).recursoUno(Type.ZAFIRO).recursoDos(Type.ORO).costR1(400).costR2(200).attackPower(125)),
+    LEGENDARYMACHINE(new TypeBuilder("Legendary Machine").tipo("Vehiculo").vida(250).waitTime(1).recursoUno(Type.ZAFIRO).recursoDos(Type.ORO).costR1(350).costR2(150).attackPower(100)),
    
-    REYBARBARO(new TypeBuilder("Rey Barbaro").tipo("Especialista").vida(400).waitTime(3).recursoUno("Zafiro").recursoDos("Diamante").costR1(750).costR2(500).attackPower(200)),
-    BARBAROS(new TypeBuilder("Barbaros").tipo("Escuadron").vida(250).waitTime(2).recursoUno("Oro").recursoDos("Diamante").costR1(600).costR2(400).attackPower(100)),
-    LANZARROCAS(new TypeBuilder("Lanzarrocas").tipo("Escuadron").vida(200).waitTime(1).recursoUno("Oro").recursoDos("Diamante").costR1(400).costR2(400).attackPower(75)),
+    REYBARBARO(new TypeBuilder("Rey Barbaro").tipo("Especialista").vida(400).waitTime(3).recursoUno(Type.ZAFIRO).recursoDos(Type.DIAMANTES).costR1(750).costR2(500).attackPower(200)),
+    BARBAROS(new TypeBuilder("Barbaros").tipo("Escuadron").vida(250).waitTime(2).recursoUno(Type.ORO).recursoDos(Type.DIAMANTES).costR1(600).costR2(400).attackPower(100)),
+    LANZARROCAS(new TypeBuilder("Lanzarrocas").tipo("Escuadron").vida(200).waitTime(1).recursoUno(Type.ORO).recursoDos(Type.DIAMANTES).costR1(400).costR2(400).attackPower(75)),
    
-    WARMACHINE(new TypeBuilder("War Machine").tipo("Vehiculo").vida(275).waitTime(2).recursoUno("Zafiro").recursoDos("Oro").costR1(450).costR2(550).attackPower(150)),
-    GHOSTCAR(new TypeBuilder("Ghost Car").tipo("Vehiculo").vida(275).waitTime(1).recursoUno("Zafiro").recursoDos("Oro").costR1(400).costR2(600).attackPower(150));
+    WARMACHINE(new TypeBuilder("War Machine").tipo("Vehiculo").vida(275).waitTime(2).recursoUno(Type.ZAFIRO).recursoDos(Type.ORO).costR1(450).costR2(550).attackPower(150)),
+    GHOSTCAR(new TypeBuilder("Ghost Car").tipo("Vehiculo").vida(275).waitTime(1).recursoUno(Type.ZAFIRO).recursoDos(Type.ORO).costR1(400).costR2(600).attackPower(150));
 
     private final String nombre;     //Requerido
     private final String tipo;       //Opcional
-    private final String recurso1;   //Opcional
-    private final String recurso2;   //Opcional
+    private final Type recurso1;   //Opcional
+    private final Type recurso2;   //Opcional
     private final int vida;          //Opcional
     private final int waitTime;      //Opcional
     private final int attackPower;   //Opcional
@@ -88,11 +88,11 @@ public enum Type {
         return tipo;
     }
 
-    public String getRecurso1() {
+    public Type getRecurso1() {
         return recurso1;
     }
 
-    public String getRecurso2() {
+    public Type getRecurso2() {
         return recurso2;
     }
 
@@ -117,8 +117,8 @@ public enum Type {
             
         private final String nombre;     //Requerido
         private String tipo;       //Opcional
-        private String recurso1;   //Opcional
-        private String recurso2;   //Opcional
+        private Type recurso1;   //Opcional
+        private Type recurso2;   //Opcional
         private int vida;          //Opcional
         private int waitTime;      //Opcional
         private int attackPower;   //Opcional
@@ -134,12 +134,12 @@ public enum Type {
             return this;
         }
         
-        public TypeBuilder recursoUno(String recurso){
+        public TypeBuilder recursoUno(Type recurso){
             this.recurso1 = recurso;
             return this;
         }
         
-        public TypeBuilder recursoDos(String recurso){
+        public TypeBuilder recursoDos(Type recurso){
             this.recurso2 = recurso;
             return this;
         }

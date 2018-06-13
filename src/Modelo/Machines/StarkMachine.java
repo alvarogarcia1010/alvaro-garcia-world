@@ -5,11 +5,23 @@
  */
 package Modelo.Machines;
 
+import alvarogarciaworld.Type;
+
 /**
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
 public class StarkMachine extends MachineManager implements MachineManagementInterface{
+
+    public StarkMachine() {
+        super(Type.STARKMACHINE.getNombre(),
+              Type.STARKMACHINE,
+              Type.STARKMACHINE.getVida(),
+              Type.STARKMACHINE.getAttackPower(),
+              Type.STARKMACHINE.getWaitTime(),0,false);
+        this.cost.put(Type.STARKMACHINE.getRecurso1(),Type.STARKMACHINE.getCostR1());
+        this.cost.put(Type.STARKMACHINE.getRecurso2(),Type.STARKMACHINE.getCostR2());
+    }
 
     @Override
     public void atacar() {

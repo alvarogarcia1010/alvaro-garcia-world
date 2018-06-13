@@ -2,6 +2,7 @@
 package Modelo.Buildings;
 
 import Modelo.Machines.MachineManager;
+import alvarogarciaworld.Type;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +13,16 @@ public class Huesera extends BuildingManager implements BuildingManagementInterf
 
     private String machineType;
     private ArrayList<MachineManager> machines;
+
+    public Huesera() {
+        super(Type.HUESERA.getNombre(),
+        Type.HUESERA,
+        Type.HUESERA.getVida(),
+        Type.HUESERA.getWaitTime(),0,false);
+        this.addCost(Type.HUESERA.getRecurso1(),Type.HUESERA.getCostR1());
+        this.addCost(Type.HUESERA.getRecurso2(),Type.HUESERA.getCostR2());
+        this.machines = new ArrayList<>();
+    }
 
     //CONSTRUCTOR
     
@@ -24,6 +35,9 @@ public class Huesera extends BuildingManager implements BuildingManagementInterf
         this.machineType = machineType;
     }
 
+    public ArrayList<MachineManager> getMachines() {
+        return machines;
+    }
     
     
     //FUNCIONES 
@@ -55,7 +69,7 @@ public class Huesera extends BuildingManager implements BuildingManagementInterf
 
     @Override
     public void destruir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("La Huesera ha sido destruida");
     }
     
 }

@@ -14,10 +14,18 @@ public class Cuartel extends BuildingManager implements BuildingManagementInterf
     private ArrayList<ArmyManager> army;
 
     //CONSTRUCTOR
-    
-    //METODOS GETTER AND SETTER
+    public Cuartel() {
+        super(Type.CUARTEL.getNombre(),
+        Type.CUARTEL,
+        Type.CUARTEL.getVida(),
+        Type.CUARTEL.getWaitTime(),0,false);
+        this.addCost(Type.CUARTEL.getRecurso1(),Type.CUARTEL.getCostR1());
+        this.addCost(Type.CUARTEL.getRecurso2(),Type.CUARTEL.getCostR2());
+        this.army = new ArrayList<>();
+    }
 
     
+    //METODOS GETTER AND SETTER
     
     //FUNCIONES 
     /**
@@ -45,7 +53,7 @@ public class Cuartel extends BuildingManager implements BuildingManagementInterf
 
     @Override
     public void destruir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("El Cuartel ha sido Destruido");
     }
     
 }

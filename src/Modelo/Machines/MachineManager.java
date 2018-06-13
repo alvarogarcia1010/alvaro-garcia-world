@@ -23,8 +23,20 @@ public class MachineManager {
     protected int creationFase;
     protected boolean isEnable;
     protected TreeMap<Type, Integer> cost;
+
+    public MachineManager(String nombre, Type tipo, int vida, int damage, int waitTime, int creationFase, boolean isEnable) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.vida = vida;
+        this.damage = damage;
+        this.waitTime = waitTime;
+        this.creationFase = creationFase;
+        this.isEnable = isEnable;
+        this.cost = new TreeMap<>();
+    }
     
-    //GETTER AND SETTER
+    
+//GETTER AND SETTER
     public String getNombre() {
         return nombre;
     }
@@ -79,6 +91,10 @@ public class MachineManager {
 
     public void setIsEnable(boolean isEnable) {
         this.isEnable = isEnable;
+    }
+
+    public TreeMap<Type, Integer> getCost() {
+        return cost;
     }
     
     public void addCost(Type recurso, int cost){
