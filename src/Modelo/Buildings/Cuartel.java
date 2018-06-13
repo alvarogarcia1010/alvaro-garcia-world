@@ -24,10 +24,17 @@ public class Cuartel extends BuildingManager implements BuildingManagementInterf
         this.army = new ArrayList<>();
     }
 
-    
     //METODOS GETTER AND SETTER
-    
-    //FUNCIONES 
+   
+    public ArrayList<ArmyManager> getArmy() {    
+        return army;
+    }
+
+    public void setArmy(ArrayList<ArmyManager> army) {
+        this.army = army;
+    }
+
+    //FUNCIONES
     /**
      * This funtion add a ArmyManager Object in the ArrayList
      * @param tropa 

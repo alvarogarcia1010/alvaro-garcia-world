@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  *
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
-public class AldeaManager {
+public class AldeaManager implements AldeaManagementInterface{
     private String nombreJugador;
     private int faseActual;
     private RazaManager razaDisponible;
@@ -140,17 +140,123 @@ public class AldeaManager {
     public boolean verificarRecursos(Type tipo){
         boolean prueba;
         
-        prueba = (tipo.getCostR1() == this.recursosDisponibles.get(tipo.getRecurso1())) && 
-                 (tipo.getCostR2() == this.recursosDisponibles.get(tipo.getRecurso2()));
+        prueba = (tipo.getCostR1() <= this.recursosDisponibles.get(tipo.getRecurso1())) && 
+                 (tipo.getCostR2() <= this.recursosDisponibles.get(tipo.getRecurso2()));
 
      
         return prueba;
     }
     
+    public BuildingManager buscarEdificio(Type edificio) {
+            for (BuildingManager edificacion : this.edificiosConstruidos) {                
+                if (edificacion.getTipo().equals(edificio)) {
+                    return edificacion;
+                }
+            }
+        
+        return null;
+    }
+    
+    public int elegirTropa(){
+        String disponibles = "Tropas disponibles: \n";
+        int opcion;
+          
+        for (int i = 0; i <= this.razaDisponible.getTropasDisponibles().size()-1; i++) {
+            disponibles = disponibles + i + ". " + this.razaDisponible.getTropasDisponibles().get(i).getNombre() + "\n";
+        }
+        
+        try {
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(disponibles, null));
+        }catch(NumberFormatException e){
+            opcion = 10;
+        }
+        return opcion;
+    }
     
     //Constructor debe inicializar los recursos y crear el centro de mando
+    /**
+     * Agrega una tropa a la lista de topas
+     */
+    @Override
     public void entrenarTropa(){
-        //Desde Cuartel
+        int opcion = this.elegirTropa();
+        int subOpcion;
+        AbstractFactory fabrica = FactoryProducer.getFactory(Type.ARMY);
+        ArmyManager temp;
+        String msj;
+        boolean verificarRecursos;
+        
+        switch(opcion){
+            case 1:
+                   subOpcion = this.validarEleccion(Type.ARQUERAS);
+                   switch(subOpcion){
+                       case 1:
+                            verificarRecursos = this.verificarRecursos(Type.ARQUERAS);
+                            if(verificarRecursos){
+                                 temp = fabrica.getArmy(Type.ARQUERAS);
+                                 temp.setCreationFase(this.faseActual);
+                                 msj = "Arqueras se estan entrenando \n Fases a esperar: " + temp.getWaitTime() +"\n";
+                                 this.tropasPreparadas.add(temp);
+                                 JOptionPane.showMessageDialog(null,msj);
+                            }else{
+                                 msj = "Recursos Insuficientes para entrenar arqueras";
+                                 JOptionPane.showMessageDialog(null,msj);
+                            }
+                            break;
+                       default:
+                           msj = "Entrenamiento cancelada";
+                           JOptionPane.showMessageDialog(null,msj);
+                           break;
+                   }
+                break;
+            case 2:
+                   subOpcion = this.validarEleccion(Type.VALQUIRIAS);
+                   switch(subOpcion){
+                       case 1:
+                            verificarRecursos = this.verificarRecursos(Type.VALQUIRIAS);
+                            if(verificarRecursos){
+                                 temp = fabrica.getArmy(Type.VALQUIRIAS);
+                                 temp.setCreationFase(this.faseActual);
+                                 msj = "Valquirias se estan entrenando \n Fases a esperar: " + temp.getWaitTime() +"\n";
+                                 this.tropasPreparadas.add(temp);
+                                 JOptionPane.showMessageDialog(null,msj);
+                            }else{
+                                 msj = "Recursos Insuficientes para entrenar valquirias";
+                                 JOptionPane.showMessageDialog(null,msj);
+                            }
+                            break;
+                       default:
+                           msj = "Entrenamiento cancelada";
+                           JOptionPane.showMessageDialog(null,msj);
+                           break;
+                   }
+                break;
+            case 3:
+                   subOpcion = this.validarEleccion(Type.REINAARQUERA);
+                   switch(subOpcion){
+                       case 1:
+                            verificarRecursos = this.verificarRecursos(Type.REINAARQUERA);
+                            if(verificarRecursos){
+                                 temp = fabrica.getArmy(Type.REINAARQUERA);
+                                 temp.setCreationFase(this.faseActual);
+                                 msj = "Reina Arquera se estan entrenando \n Fases a esperar: " + temp.getWaitTime() +"\n";
+                                 this.tropasPreparadas.add(temp);
+                                 JOptionPane.showMessageDialog(null,msj);
+                            }else{
+                                 msj = "Recursos Insuficientes para entrenar Reina Arquera";
+                                 JOptionPane.showMessageDialog(null,msj);
+                            }
+                            break;
+                       default:
+                           msj = "Entrenamiento cancelada";
+                           JOptionPane.showMessageDialog(null,msj);
+                           break;
+                   }
+                break;
+            default:
+                break;
+        }
+        
     }
     
     public int elegirEdificio(){
@@ -169,6 +275,10 @@ public class AldeaManager {
         return opcion;
     }
     
+    /**
+     * Agrega un edificio a lista de edificios
+     */
+    @Override
     public void construirEdificio(){
             int opcion = this.elegirEdificio();
             int subOpcion;
@@ -311,6 +421,10 @@ public class AldeaManager {
         
     }
     
+    /**
+     * Agrega un vehiculo a lista de edificios
+     */
+    @Override
     public void crearVehiculo(){
         //Desde Cuartel
     }
@@ -319,14 +433,14 @@ public class AldeaManager {
         for (BuildingManager edificacion : this.edificiosConstruidos){
             if((edificacion.getCreationFase()+edificacion.getWaitTime()) == this.faseActual){
                 edificacion.setIsEnable(true);
-                System.out.println(edificacion.getNombre() + "esta listo para ser utilizado");
+                System.out.println(edificacion.getNombre() + " esta listo para ser utilizado");
             }
         }
         
         for (ArmyManager ejercito : this.tropasPreparadas){
             if((ejercito.getCreationFase()+ejercito.getWaitTime()) == this.faseActual){
                 ejercito.setIsEnable(true);
-                System.out.println(ejercito.getNombre() + "esta listo para atacar");
+                System.out.println(ejercito.getNombre() + " esta listo para atacar");
             }
         }
         
@@ -338,6 +452,31 @@ public class AldeaManager {
         }
     }
     
+    @Override
+    public void viewEdificios(){
+        
+        for (BuildingManager edificacion : this.edificiosConstruidos){
+            if((edificacion.getCreationFase()+edificacion.getWaitTime()) <= this.faseActual){
+                System.out.println(edificacion.getNombre() + " \tEstado: Disponible" + " \tVida: " + edificacion.getVida());
+            }else{
+                System.out.println(edificacion.getNombre() + " \tEstado: En Proceso" + " \tVida: " + edificacion.getVida());
+                
+            }
+        }
+    }
+    
+        @Override
+    public void viewTropas(){
+        
+        for (ArmyManager tropa : this.tropasPreparadas){
+            if((tropa.getCreationFase()+tropa.getWaitTime()) <= this.faseActual){
+                System.out.println(tropa.getNombre() + " \tEstado: Disponible" + " \tVida: " + tropa.getVida());
+            }else{
+                System.out.println(tropa.getNombre() + " \tEstado: En Proceso" + " \tVida: " + tropa.getVida());
+                
+            }
+        }
+    }
     
     public void mejorarCentroDemando(){
         int[] newCost = new int[3];
@@ -403,8 +542,8 @@ public class AldeaManager {
                                 Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO) +"\n";
             JOptionPane.showMessageDialog(null,encabezado);
             
-            System.out.println("================= Turno de " + this.nombreJugador + " =================");
-            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t \t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
+            System.out.println("<================= Turno de " + this.nombreJugador + " =================>");
+            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
             
             opcion = m.generalOptions();
             
@@ -414,15 +553,20 @@ public class AldeaManager {
                     switch(subOption){
                         case 1:
                             System.out.println("<========================== Mejorar Centro de Mando ==========================>\n");
+                            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
+
                             this.mejorarCentroDemando();
                             break;
                         case 2:
                             System.out.println("<========================== Construir Estructuras ==========================>\n");
+                            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
+                            
                             this.construirEdificio();
                             break;
                         case 3:
-                            System.out.println("<========================== Ver Estructuras Construidas ==========================>\n");
-                           
+                            System.out.println("<========================== Estructuras Construidas ==========================>\n");
+                            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
+                            this.viewEdificios();
                             break;
                         default:
                             break;
@@ -433,15 +577,23 @@ public class AldeaManager {
                     switch(subOption){
                         case 1:
                             System.out.println("<========================== Entrenar Tropa ==========================>\n");
+                            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
+                            this.entrenarTropa();
                             break;
                         case 2:
                             System.out.println("<========================== Mostrar Tropas Entrenadas ==========================>\n");
+                            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
+                            
                             break;
                         case 3:
                             System.out.println("<========================== Atacar ==========================>\n");
+                            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
+
                             break;
                         case 4:
                             System.out.println("<========================== Defender ==========================>\n");
+                            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
+
                             break;
                         default:
                             break;
@@ -452,12 +604,18 @@ public class AldeaManager {
                     switch(subOption){
                         case 1:
                             System.out.println("<========================== Recolectar Zafiro ==========================>\n");
+                            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
+
                             break;
                         case 2:
                             System.out.println("<========================== Almacenar Oro ==========================>\n");
+                            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
+
                             break;
                         case 3:
                             System.out.println("<========================== Almacenar Diamantes ==========================>\n");
+                            System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
+
                             break;
                         default:
                             break;

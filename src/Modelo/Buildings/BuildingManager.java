@@ -1,8 +1,11 @@
 
 package Modelo.Buildings;
 
+import Modelo.Army.ArmyManager;
 import alvarogarciaworld.Type;
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 
 /**
@@ -90,6 +93,42 @@ public class BuildingManager {
             System.out.println(recurso.getKey() + "  ->  " + recurso.getValue());
         }
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + Objects.hashCode(this.nombre);
+        hash = 19 * hash + Objects.hashCode(this.tipo);
+        hash = 19 * hash + this.vida;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BuildingManager other = (BuildingManager) obj;
+        if (this.vida != other.vida) {
+            return false;
+        }
+        if (!Objects.equals(this.nombre, other.nombre)) {
+            return false;
+        }
+        if (this.tipo != other.tipo) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+    
     
     
 }
