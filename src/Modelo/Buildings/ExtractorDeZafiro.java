@@ -20,11 +20,11 @@ public class ExtractorDeZafiro extends BuildingManager implements BuildingManage
         this.addCost(Type.EXTRACTORDEZAFIRO.getRecurso1(),Type.EXTRACTORDEZAFIRO.getCostR1());
         this.addCost(Type.EXTRACTORDEZAFIRO.getRecurso2(),Type.EXTRACTORDEZAFIRO.getCostR2());
         this.recurso = Type.ZAFIRO;
-        this.produccionxfase = 1000;
+        this.produccionxfase = 1500;
     }
 
     //CONSTRUCTOR
-    
+
     //METODOS GETTER AND SETTER
     public int getProduccionxfase() {
         return produccionxfase;
@@ -41,17 +41,17 @@ public class ExtractorDeZafiro extends BuildingManager implements BuildingManage
     public void setRecurso(Type recurso) {
         this.recurso = recurso;
     }
-    
-    
-    //FUNCIONES 
+
+
+    //FUNCIONES
     public void recolectarRecurso(){
-        
+
     }
-    
+
 
     @Override
     public void destruir() {
         System.out.println("El recolector de zafiro ha sido destruido");
     }
-    
+
 }

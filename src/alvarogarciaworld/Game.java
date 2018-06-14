@@ -14,9 +14,9 @@ import View.Menu;
  * @author Alvaro García <alvarogarcia1010 at github.com>
  */
 public class Game {
-    
+
     public static void initializeGame(){
-       
+
        try{
         //Obteniendo instancia del menu para mostrar opciones
         Menu m  = Menu.getInstance();
@@ -42,9 +42,9 @@ public class Game {
         raza1.showBuildingAvailable();
         raza1.showMachinesAvailable();
         System.out.print("\n");
-        
+
         Thread.sleep(1000);
-        
+
         System.out.println("<============== " + "Raza: " + Type.KNIGHTSOFTHESHADOWS.getNombre() + " ==============>");
         raza2.showArmyAvailable();
         raza2.showBuildingAvailable();
@@ -57,7 +57,7 @@ public class Game {
         raza3.showBuildingAvailable();
         raza3.showMachinesAvailable();
         System.out.print("\n");
-        
+
         option = m.razaOption();
         while(option>3){
             option = m.razaOption();
@@ -77,9 +77,9 @@ public class Game {
                 playerOne.setRazaDisponible(raza1);
                 break;
         }
-        
+
         //Para Jugador 2
-        
+
         System.out.println("Jugador Dos \n");
         playerTwo.setNombreJugador(m.insertarNombre());
 
@@ -90,9 +90,9 @@ public class Game {
         raza1.showBuildingAvailable();
         raza1.showMachinesAvailable();
         System.out.print("\n");
-        
+
         Thread.sleep(1000);
-        
+
         System.out.println("<============== " + "Raza: " + Type.KNIGHTSOFTHESHADOWS.getNombre() + " ==============>");
         raza2.showArmyAvailable();
         raza2.showBuildingAvailable();
@@ -105,7 +105,7 @@ public class Game {
         raza3.showBuildingAvailable();
         raza3.showMachinesAvailable();
         System.out.print("\n");
-        
+
         option = m.razaOption();
         while(option>3){
             option = m.razaOption();
@@ -125,11 +125,11 @@ public class Game {
                 playerTwo.setRazaDisponible(raza1);
                 break;
         }
-        
-        
+
+
         System.out.println(playerOne.getNombreJugador());
         System.out.println(playerTwo.getNombreJugador());
-           
+
         //Logica del juego
         while(!aldeaDestruida){
             if(playerOne.getEdificiosConstruidos().isEmpty() || playerTwo.getEdificiosConstruidos().isEmpty()){
@@ -142,23 +142,23 @@ public class Game {
                 aldeaDestruida = true;
                 break;
             }
-            
+
             playerOne.verificarUso();
-            playerOne.turno();
-            
+            playerOne.turno(playerTwo);
+
             playerTwo.verificarUso();
-            playerTwo.turno();
-            
+            playerTwo.turno(playerOne);
+
             playerOne.avanzarFase();
             playerTwo.avanzarFase();
         }
-        
-        
-        
+
+
+
         }catch(InterruptedException e){
            System.err.println("Lo sentimos, hubo un error de compilacion :(");
         }
-            
+
     }
-    
+
 }

@@ -49,9 +49,9 @@ public class AldeaManager implements AldeaManagementInterface{
         this.edificiosConstruidos.add(0,this.centroDeMando);
 
         //Inicializo los valores de los recursos
-        this.recursosDisponibles.put(Type.ORO, 1750);
-        this.recursosDisponibles.put(Type.DIAMANTES, 1000);
-        this.recursosDisponibles.put(Type.ZAFIRO, 3000);
+        this.recursosDisponibles.put(Type.ORO, 4000);
+        this.recursosDisponibles.put(Type.DIAMANTES, 2250);
+        this.recursosDisponibles.put(Type.ZAFIRO, 9000);
 
         this.faseActual = 1;
         this.m = Menu.getInstance();
@@ -839,25 +839,46 @@ public class AldeaManager implements AldeaManagementInterface{
 
     public int elegirTropaParaAtacar(){
         String disponibles = "Tropas disponibles: \n";
+        ArrayList<ArmyManager> tropas = new ArrayList<>();
         int opcion, i = 1;
 
         for (ArmyManager tropa : this.tropasPreparadas) {
           if((tropa.getCreationFase()+tropa.getWaitTime()) <= this.faseActual){
-              System.out.println(tropa.getNombre() + " \tEstado: Disponible" + " \tVida: " + tropa.getVida());
             disponibles = disponibles + (i) + ". " + tropa.getNombre() + " Ataque: " + tropa.getAttackPower + "\n";
+            tropas.add(tropa);
             i = i + 1;
         }
 
         try {
+          if(!tropa.isEmpty()){
             opcion = Integer.parseInt(JOptionPane.showInputDialog(disponibles, null));
+          }else{
+            msj = "¡Tropas en preparcion! \n Espere a que las tropas esten disponibles para atacar";
+            JOptionPane.showMessageDialog(null,msj);
+            opcion = -1;
+          }
+
         }catch(NumberFormatException e){
             opcion = -1;
         }
         return opcion;
     }
 
-    public void realizarAtaque(){
+    public void elegirEdificioAAtacar(AldeaManager aldeaEnemiga){
+
+        for (BuildingManager edificacion : this.edificiosConstruidos){
+            if((edificacion.getCreationFase()+edificacion.getWaitTime()) <= this.faseActual){
+                System.out.println(edificacion.getNombre() + " \tEstado: Disponible" + " \tVida: " + edificacion.getVida());
+            }else{
+                System.out.println(edificacion.getNombre() + " \tEstado: En Proceso" + " \tVida: " + edificacion.getVida());
+
+            }
+        }
+    }
+
+    public void realizarAtaque(AldeManager aldeaEnemiga){
       int posicionTropa = this.elegirTropaParaAtacar()-1;
+
 
     }
 
@@ -865,7 +886,7 @@ public class AldeaManager implements AldeaManagementInterface{
         this.faseActual += 1;
     }
 
-    public void turno(){
+    public void turno(AldeaManager aldeaEnemiga){
         int opcion = 0, subOption =0;
         while(opcion != 4){
 
@@ -933,7 +954,7 @@ public class AldeaManager implements AldeaManagementInterface{
                         case 4:
                             System.out.println("<========================== Atacar ==========================>\n");
                             System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
-                            this.realizarAtaque();
+                            this.realizarAtaque(aldeaEnemiga);
                             break;
                         case 5:
                             System.out.println("<========================== Defender ==========================>\n");

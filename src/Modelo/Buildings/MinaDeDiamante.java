@@ -20,11 +20,11 @@ public class MinaDeDiamante extends BuildingManager implements BuildingManagemen
         this.addCost(Type.MINADEDIAMANTE.getRecurso1(),Type.MINADEDIAMANTE.getCostR1());
         this.addCost(Type.MINADEDIAMANTE.getRecurso2(),Type.MINADEDIAMANTE.getCostR2());
         this.recurso = Type.DIAMANTES;
-        this.produccionxfase = 500;
+        this.produccionxfase = 750;
     }
 
     //CONSTRUCTOR
-    
+
     //METODOS GETTER AND SETTER
     public int getProduccionxfase() {
         return produccionxfase;
@@ -41,17 +41,17 @@ public class MinaDeDiamante extends BuildingManager implements BuildingManagemen
     public void setRecurso(Type recurso) {
         this.recurso = recurso;
     }
-    
-    
-    //FUNCIONES 
+
+
+    //FUNCIONES
     public void recolectarRecurso(){
-        
+
     }
-    
+
 
     @Override
     public void destruir() {
         System.out.println("La mina de diamantes ha sido destruida");
     }
-    
+
 }

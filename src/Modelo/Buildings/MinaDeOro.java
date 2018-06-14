@@ -20,11 +20,11 @@ public class MinaDeOro extends BuildingManager implements BuildingManagementInte
         this.addCost(Type.MINADEORO.getRecurso1(),Type.MINADEORO.getCostR1());
         this.addCost(Type.MINADEORO.getRecurso2(),Type.MINADEORO.getCostR2());
         this.recurso = Type.ORO;
-        this.produccionxfase = 300;
+        this.produccionxfase = 1000;
     }
 
     //CONSTRUCTOR
-    
+
     //METODOS GETTER AND SETTER
     public int getProduccionxfase() {
         return produccionxfase;
@@ -41,17 +41,17 @@ public class MinaDeOro extends BuildingManager implements BuildingManagementInte
     public void setRecurso(Type recurso) {
         this.recurso = recurso;
     }
-    
-    
-    //FUNCIONES 
+
+
+    //FUNCIONES
     public void recolectarRecurso(){
-        
+
     }
-    
+
 
     @Override
     public void destruir() {
         System.out.println("La Mina de Oro ha sido destruida");
     }
-    
+
 }
