@@ -15,5 +15,6 @@ public interface AldeaManagementInterface {
     void entrenarTropa();
     void viewEdificios();
     void viewTropas();
+    void viewVehiculos();
 
 }

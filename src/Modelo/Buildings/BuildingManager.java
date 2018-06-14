@@ -18,6 +18,7 @@ public class BuildingManager {
     protected int vida;
     protected int waitTime;
     protected int creationFase;
+    protected int recolectionFase;
     protected boolean isEnable;
     protected TreeMap<Type, Integer> cost;
 
@@ -27,6 +28,7 @@ public class BuildingManager {
         this.vida = vida;
         this.waitTime = waitTime;
         this.creationFase = creationFase;
+        this.recolectionFase = creationFase + waitTime;
         this.isEnable = isEnable;
         this.cost = new TreeMap<>();
     }
@@ -71,6 +73,16 @@ public class BuildingManager {
     public void setCreationFase(int creationFase) {
         this.creationFase = creationFase;
     }
+
+    public int getRecolectionFase() {
+        return recolectionFase;
+    }
+
+    public void setRecolectionFase(int recolectionFase) {
+        this.recolectionFase = recolectionFase;
+    }
+    
+    
 
     public boolean isIsEnable() {
         return isEnable;
