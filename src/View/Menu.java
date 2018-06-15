@@ -89,10 +89,11 @@ public class Menu {
         int option;
        
         String options = "1. Entrenar Tropas \n" +
-                         "2. Mostrar Tropas Entrenadas \n" +
-                         "3. Atacar \n" +
-                         "4. Defender \n" +
-                         "5. Atras \n" +
+                         "2. CrearVehiculo \n" +
+                         "3. Mostrar Tropas Entrenadas \n" +
+                         "4. Atacar \n" +
+                         "5. Defender \n" +
+                         "6. Atras \n" +
                          "Elija la opcion que desee:";
         try {
             option = Integer.parseInt(JOptionPane.showInputDialog(options, null));

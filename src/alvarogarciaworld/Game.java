@@ -105,7 +105,7 @@ public class Game {
         raza3.showBuildingAvailable();
         raza3.showMachinesAvailable();
         System.out.print("\n");
-
+        Thread.sleep(1000);
         option = m.razaOption();
         while(option>3){
             option = m.razaOption();
@@ -148,6 +148,30 @@ public class Game {
 
             playerTwo.verificarUso();
             playerTwo.turno(playerOne);
+            
+            if(playerOne.isIsAttack()){
+                if(playerOne.getFaseComienzoAtaque()+2 >=playerOne.getFaseActual()){
+                    playerOne.realizarAtaque(playerTwo);
+                }else{
+                    System.out.println("Las tropas del jugador"+ playerOne.getNombreJugador() + "van en camino");
+                }
+            }
+            
+            if(playerTwo.isIsAttack()){
+                if(playerTwo.getFaseComienzoAtaque()+2 >=playerTwo.getFaseActual()){
+                    playerTwo.realizarAtaque(playerOne);
+                }else{
+                    System.out.println("Las tropas del jugador"+ playerTwo.getNombreJugador() + "van en camino");
+                }
+            }
+            
+            if(playerOne.isIsDefend()){
+                playerOne.realizarDefensa(playerTwo);
+            }
+            
+            if(playerTwo.isIsDefend()){
+                playerTwo.realizarDefensa(playerOne);
+            }
 
             playerOne.avanzarFase();
             playerTwo.avanzarFase();

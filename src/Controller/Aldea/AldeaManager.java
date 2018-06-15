@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  */
 public class AldeaManager implements AldeaManagementInterface{
     private String nombreJugador;
-    private int faseActual;
+    private int faseActual, faseComienzoAtaque, posicionTropa, posicionEdificio;
     private RazaManager razaDisponible;
     private CentroDeMando centroDeMando;
     private TreeMap<Type, Integer> recursosDisponibles;
@@ -32,6 +32,7 @@ public class AldeaManager implements AldeaManagementInterface{
     private ArrayList<ArmyManager> tropasPreparadas;
     private ArrayList<MachineManager> vehiculosPreparados;
     private Menu m;
+    private boolean isAttack, isDefend;
 
     private static AldeaManager[] instance = new AldeaManager[2];
 
@@ -55,6 +56,7 @@ public class AldeaManager implements AldeaManagementInterface{
 
         this.faseActual = 1;
         this.m = Menu.getInstance();
+        this.isAttack = false;
     };
 
 
@@ -121,6 +123,32 @@ public class AldeaManager implements AldeaManagementInterface{
         return vehiculosPreparados;
     }
 
+    public boolean isIsAttack() {
+        return isAttack;
+    }
+
+    public void setIsAttack(boolean isAttack) {
+        this.isAttack = isAttack;
+    }
+
+    public boolean isIsDefend() {
+        return isDefend;
+    }
+
+    public void setIsDefend(boolean isDefend) {
+        this.isDefend = isDefend;
+    }
+
+    public int getFaseComienzoAtaque() {
+        return faseComienzoAtaque;
+    }
+
+    public void setFaseComienzoAtaque(int faseComienzoAtaque) {
+        this.faseComienzoAtaque = faseComienzoAtaque;
+    }
+    
+    
+    
     public int validarEleccion(Type tipo){
         int opcion;
         String msj = "Se gastará los siguientes recursos \n"+
@@ -841,16 +869,18 @@ public class AldeaManager implements AldeaManagementInterface{
         String disponibles = "Tropas disponibles: \n";
         ArrayList<ArmyManager> tropas = new ArrayList<>();
         int opcion, i = 1;
+        String msj;
 
         for (ArmyManager tropa : this.tropasPreparadas) {
           if((tropa.getCreationFase()+tropa.getWaitTime()) <= this.faseActual){
-            disponibles = disponibles + (i) + ". " + tropa.getNombre() + " Ataque: " + tropa.getAttackPower + "\n";
+            disponibles = disponibles + i + ". " + tropa.getNombre() + " Ataque: " + tropa.getDamage() + "\n";
             tropas.add(tropa);
             i = i + 1;
+            }
         }
-
+        
         try {
-          if(!tropa.isEmpty()){
+          if(!tropas.isEmpty()){
             opcion = Integer.parseInt(JOptionPane.showInputDialog(disponibles, null));
           }else{
             msj = "¡Tropas en preparcion! \n Espere a que las tropas esten disponibles para atacar";
@@ -863,23 +893,92 @@ public class AldeaManager implements AldeaManagementInterface{
         }
         return opcion;
     }
+    
 
-    public void elegirEdificioAAtacar(AldeaManager aldeaEnemiga){
-
-        for (BuildingManager edificacion : this.edificiosConstruidos){
-            if((edificacion.getCreationFase()+edificacion.getWaitTime()) <= this.faseActual){
-                System.out.println(edificacion.getNombre() + " \tEstado: Disponible" + " \tVida: " + edificacion.getVida());
-            }else{
-                System.out.println(edificacion.getNombre() + " \tEstado: En Proceso" + " \tVida: " + edificacion.getVida());
-
+    public int elegirEdificioAtacar(AldeaManager aldeaEnemiga){
+        String disponibles = "Edificios disponibles: \n";
+        ArrayList<BuildingManager> edificios;
+        edificios = new ArrayList<>();
+        int opcion, i = 1;
+        
+        for (BuildingManager edificacion : aldeaEnemiga.getEdificiosConstruidos()){
+            if((edificacion.getCreationFase() + edificacion.getWaitTime()) <= this.faseActual){
+                disponibles = disponibles + i + ". " + edificacion.getNombre() + " Vida: " + edificacion.getVida() + "\n";
+                edificios.add(edificacion);
+                i = i + 1;
             }
         }
+        
+        try {
+          if(!edificios.isEmpty()){
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(disponibles, null));
+          }else{
+            disponibles = "¡No hay Edificios para atacar! \n";
+            JOptionPane.showMessageDialog(null,disponibles);
+            opcion = -1;
+          }
+
+        }catch(NumberFormatException e){
+            opcion = -1;
+        }
+        
+        return opcion;
     }
 
-    public void realizarAtaque(AldeManager aldeaEnemiga){
-      int posicionTropa = this.elegirTropaParaAtacar()-1;
+    public void realizarAtaque(AldeaManager aldeaEnemiga){
+
+      
+      BuildingManager edificio = aldeaEnemiga.getEdificiosConstruidos().get(this.posicionEdificio);
 
 
+      ArmyManager tropa = this.tropasPreparadas.get(this.posicionTropa);
+      
+      edificio.setVida(edificio.getVida()-tropa.getDamage());
+      
+      System.out.println(this.nombreJugador + " esta atacando!!!!");
+      System.out.println("La tropa " + tropa.getNombre() + " esta atacando al edificio "+ edificio.getNombre());
+      System.out.println("Daño recibido por fase: " + tropa.getDamage());
+      System.out.println("Vida del edificio: " + edificio.getVida());
+      
+      if(edificio.getVida() <= 0 ){
+          aldeaEnemiga.getEdificiosConstruidos().remove(edificio);
+
+      }  
+
+    }
+    
+    public void atacar(AldeaManager aldeaEnemiga){
+        if (!this.isAttack){
+            this.faseComienzoAtaque = this.faseActual;
+            this.isAttack = true;
+            this.posicionTropa = this.elegirTropaParaAtacar()-1;
+            this.posicionEdificio = this.elegirEdificioAtacar(aldeaEnemiga)-1;
+        }else{
+            System.out.println("Esperame...");
+        }
+    }
+    
+    public void realizarDefensa(AldeaManager aldeaEnemiga){
+        ArmyManager tropaEnemigo, miTropa;
+        if (this.isAttack){
+            if(this.faseComienzoAtaque + 3 >= this.faseActual){
+                tropaEnemigo = aldeaEnemiga.getTropasPreparadas().get(this.posicionTropa);
+                miTropa = this.tropasPreparadas.get(this.elegirEdificioAtacar(aldeaEnemiga)-1);
+                if(tropaEnemigo.getVida() >= 0){
+                    tropaEnemigo.setVida(tropaEnemigo.getVida() - miTropa.getDamage());
+                    System.out.println(miTropa.getNombre() + "esta defendiendo el ataque!!!");
+                    System.out.println( "Vida de tropa enemiga: "+tropaEnemigo.getVida());
+                }else{
+                    aldeaEnemiga.getTropasPreparadas().remove(tropaEnemigo);
+                    this.isAttack = false;
+                    this.isDefend = false;
+                }
+            }else{
+                System.out.println("Aun no podemos defendernos del ataque");
+            }
+        }else{
+            System.out.println("Nuestra aldea aun no se encuentra bajo ataque");
+        }
     }
 
     public void avanzarFase(){
@@ -954,12 +1053,12 @@ public class AldeaManager implements AldeaManagementInterface{
                         case 4:
                             System.out.println("<========================== Atacar ==========================>\n");
                             System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
-                            this.realizarAtaque(aldeaEnemiga);
+                            this.atacar(aldeaEnemiga);
                             break;
                         case 5:
                             System.out.println("<========================== Defender ==========================>\n");
                             System.out.println(Type.ORO.getNombre() + ": "+ this.recursosDisponibles.get(Type.ORO)+ "\t" + Type.DIAMANTES.getNombre() + ": " + this.recursosDisponibles.get(Type.DIAMANTES) + "\t  \t" + Type.ZAFIRO.getNombre() + ": " + this.recursosDisponibles.get(Type.ZAFIRO));
-
+                            this.isDefend = true;
                             break;
                         default:
                             break;
